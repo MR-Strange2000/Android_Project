@@ -44,10 +44,6 @@ public class Post extends AppCompatActivity {
                         Intent i = new Intent(Post.this,Design_Arch.class);
                         startActivity(i);
                     }
-                    else if(finalI==3){
-                        Intent i = new Intent(Post.this,Mob_Comp.class);
-                        startActivity(i);
-                    }
                     else if(finalI==4){
                         Intent i = new Intent(Post.this,Data_Admin.class);
                         startActivity(i);
@@ -56,11 +52,6 @@ public class Post extends AppCompatActivity {
                         Intent i = new Intent(Post.this,IT_Software.class);
                         startActivity(i);
                     }
-
-
-
-
-
                 }
             });
         }
