@@ -1,242 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Post"
     android:orientation="vertical">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#FFC400">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-
-
-
-        <GridLayout
-            android:id="@+id/mainGridLayout1"
+        <LinearLayout
+            android:id="@+id/Lin1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:rowCount="5"
-            android:minHeight="720dp"
-            android:columnOrderPreserved="false"
-            android:padding="14dp"
-            >
-            <androidx.cardview.widget.CardView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/technical_support"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Website And IT"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"/>
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
 
-                </LinearLayout>
+            <TextView
+                android:id="@+id/textv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/Lin1"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="86dp"
+                android:fontFamily="@font/adamina"
+                android:text="Post"
+                android:textColor="#ffff00"
+                android:textSize="40sp"
+                android:textStyle="bold" />
 
+            <EditText
+                android:id="@+id/project_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_bg"
+                android:hint="Project Name"
+                android:inputType="text"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/write"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Writing"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"/>
+            <EditText
+                android:id="@+id/project_description"
+                android:layout_width="match_parent"
+                android:layout_height="207dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_bg"
+                android:hint="Decription"
+                android:inputType="text"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
 
-                </LinearLayout>
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                android:layout_height="wrap_content" />
 
+            <EditText
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_bg"
+                android:hint="Price"
+                android:inputType="text"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/smartphone"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mobile"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"/>
-
-                </LinearLayout>
+            <Button
+                android:layout_below="@+id/Lin1"
+                android:id="@+id/btn_reg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_register"
+                android:layout_marginTop="30dp"
+                android:text="Post Project"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/colorRegister" />
 
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/creativity"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Art And Design"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"/>
-
-                </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/file_"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Data Entry"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"/>
-
-                </LinearLayout>
+        </LinearLayout>
 
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_height="0dp"
-                android:layout_width="0dp"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:layout_margin="16dp"
-                    android:orientation="vertical">
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/content"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Software Development"
-                        android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:layout_gravity="center"
-                        android:textAlignment="center"/>
+    </ScrollView>
 
-                </LinearLayout>
-
-
-            </androidx.cardview.widget.CardView>
-
-        </GridLayout>
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>

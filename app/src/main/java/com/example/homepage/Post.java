@@ -7,62 +7,46 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridLayout;
+import android.widget.Spinner;
 
 import static com.example.homepage.R.layout.add;
 import static com.example.homepage.R.layout.search;
 
-public class Post extends AppCompatActivity {
-    GridLayout mainGridLayout1;
+public class Post extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Spinner dropdown;
+    String[] items = new String[]{"website" , "it" , "android" , "one" , "two"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(add);
-        mainGridLayout1 = (GridLayout)findViewById(R.id.mainGridLayout1);
-        setSingleEvent(mainGridLayout1);
+        dropdown = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_spinner_item , items);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        dropdown.setAdapter(adapter);
+        dropdown.setOnItemSelectedListener(this);
     }
 
-    private void setSingleEvent(GridLayout mainGridLayout1) {
-        for (int i=0;i<mainGridLayout1.getChildCount();i++){
-            CardView cardview = (CardView)mainGridLayout1.getChildAt(i);
-            final int finalI = i;
-            cardview.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(finalI==0){
-                        Intent i = new Intent(Post.this,IT_Software.class);
-                        startActivity(i);
-                    }
-                    else if(finalI==1){
-                        Intent i = new Intent(Post.this,Write_Content.class);
-                        startActivity(i);
-                    }
-                    else if(finalI==2){
-                        Intent i = new Intent(Post.this,Design_Arch.class);
-                        startActivity(i);
-                    }
-                    else if(finalI==3){
-                        Intent i = new Intent(Post.this,Mob_Comp.class);
-                        startActivity(i);
-                    }
-                    else if(finalI==4){
-                        Intent i = new Intent(Post.this,Data_Admin.class);
-                        startActivity(i);
-                    }
-                    else if(finalI==5){
-                        Intent i = new Intent(Post.this,IT_Software.class);
-                        startActivity(i);
-                    }
-
-
-
-
-
-                }
-            });
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+            case 0:
+                // Whatever you want to happen when the first item gets selected
+                break;
+            case 1:
+                // Whatever you want to happen when the second item gets selected
+                break;
+            case 2:
+                // Whatever you want to happen when the thrid item gets selected
+                break;
         }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
