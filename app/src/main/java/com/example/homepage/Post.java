@@ -21,8 +21,8 @@ import static com.example.homepage.R.layout.add;
 import static com.example.homepage.R.layout.search;
 
 public class Post extends AppCompatActivity{
-    Spinner dropdown;
-    String[] items = new String[]{"website" , "it" , "android" , "one" , "two"};
+//    Spinner dropdown;
+//    String[] items = new String[]{"website" , "it" , "android" , "one" , "two"};
     EditText name , description , price;
     Button post;
     private FirebaseDatabase database;
@@ -43,7 +43,7 @@ public class Post extends AppCompatActivity{
         post = (Button)findViewById(R.id.post_project);
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("project/" + FirebaseAuth.getInstance().getCurrentUser().getUid());
+        myRef = database.getReference("project");
 
         post.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +58,7 @@ public class Post extends AppCompatActivity{
                 String key = myRef.push().getKey();
                 job.setRid(key);
 
-                myRef.child(key).setValue(job)
+                myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(job)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
