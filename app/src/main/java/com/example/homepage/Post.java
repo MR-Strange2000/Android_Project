@@ -4,29 +4,24 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.utils.post_job_format;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import static com.example.homepage.R.layout.add;
-import static com.example.homepage.R.layout.search;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Post extends AppCompatActivity{
 //    Spinner dropdown;
 //    String[] items = new String[]{"website" , "it" , "android" , "one" , "two"};
     EditText name , description , price;
     Button post;
-    private FirebaseDatabase database;
-    private DatabaseReference myRef;
+//    private FirebaseDatabase database;
+//    private DatabaseReference myRef;
+    private FirebaseFirestore firestoreDB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +37,9 @@ public class Post extends AppCompatActivity{
         price = (EditText)findViewById(R.id.price);
         post = (Button)findViewById(R.id.post_project);
 
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("project");
-
+//        database = FirebaseDatabase.getInstance();
+//        myRef = database.getReference("project");
+        firestoreDB = FirebaseFirestore.getInstance();
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,16 +50,15 @@ public class Post extends AppCompatActivity{
                 job.setPayment("f");
                 job.setDescription(description.getText().toString());
 
-                String key = myRef.push().getKey();
-                job.setRid(key);
+//                String key = myRef.push().getKey();
+//                job.setRid(key);
 
-                myRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(job)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(getApplicationContext(), "Job successfully added", Toast.LENGTH_SHORT).show();
-                            }
-                        })
+                firestoreDB.collection("project").add(job).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Toast.makeText(getApplicationContext(), "Job successfully added", Toast.LENGTH_SHORT).show();
+                    }
+                })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {

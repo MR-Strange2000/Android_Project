@@ -1,4 +1,4 @@
-package com.example.homepage;
+package com.example.utils;
 
 public class post_job_format {
     //String title, place, pincode, time, date, details, bid = "0", rid, payment;
