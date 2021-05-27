@@ -28,7 +28,7 @@
                 android:layout_above="@+id/Lin1"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:layout_marginBottom="86dp"
+                android:layout_marginBottom="30dp"
                 android:fontFamily="@font/adamina"
                 android:text="Post"
                 android:textColor="#ffff00"
@@ -54,6 +54,7 @@
                 android:background="@drawable/edt_bg"
                 android:hint="Decription"
                 android:inputType="text"
+                android:paddingLeft="150dp"
                 android:padding="15dp"
                 android:text=""
                 android:textSize="20sp" />
@@ -78,7 +79,7 @@
                 android:textSize="20sp" />
 
             <Button
-                android:layout_below="@+id/Lin1"
+                android:layout_below="@+id/post_project"
                 android:id="@+id/btn_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
