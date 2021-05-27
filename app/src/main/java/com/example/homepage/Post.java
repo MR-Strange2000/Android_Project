@@ -7,13 +7,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import static com.example.homepage.R.layout.add;
 import static com.example.homepage.R.layout.search;
 
 public class Post extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     Spinner dropdown;
     String[] items = new String[]{"website" , "it" , "android" , "one" , "two"};
-
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    String name , description ,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
