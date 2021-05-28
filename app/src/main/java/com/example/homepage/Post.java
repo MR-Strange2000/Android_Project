@@ -2,6 +2,8 @@ package com.example.homepage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -87,12 +89,16 @@ public class Post extends AppCompatActivity{
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+                                Intent i = new Intent(Post.this , MainActivity.class);
+                                startActivity(i);
                                 Toast.makeText(getApplicationContext(), "Job successfully added", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
+                                Intent i1 = new Intent(Post.this , MainActivity.class);
+                                startActivity(i1);
                                 Toast.makeText(getApplicationContext(), "Job adding failed try again later", Toast.LENGTH_SHORT).show();
                             }
                         });

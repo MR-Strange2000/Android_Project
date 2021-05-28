@@ -67,6 +67,7 @@
                 android:background="@drawable/edt_bg"
                 android:padding="15dp"
                 android:text=""
+                android:visibility="invisible"
                 android:textSize="20sp" />
             <Spinner
                 android:id="@+id/spinner"
