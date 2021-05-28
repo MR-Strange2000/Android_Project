@@ -34,8 +34,8 @@ public class Browse extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
 
-    public List<pooja> list = new ArrayList<>();
-    public List<pooja> newList = new ArrayList<>();
+    //public List<pooja> list = new ArrayList<>();
+    //public List<pooja> newList = new ArrayList<>();
     public static String classPath = "selectedPooja";
     //GridLayout mainGridLayout;
     @Override
@@ -45,8 +45,8 @@ public class Browse extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(search);
 
-       /* mainGridLayout = (GridLayout)findViewById(R.id.mainGridLayout);
-        setSingleEvent(mainGridLayout);*/
+        //mainGridLayout = (GridLayout)findViewById(R.id.mainGridLayout);
+        //setSingleEvent(mainGridLayout);
         searchBox = findViewById(R.id.searchBox);
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -79,41 +79,41 @@ public class Browse extends AppCompatActivity {
     }
 
     private void getDataFromFirebase(DatabaseReference databaseReference) {
-        list.clear();
+       // list.clear();
         databaseReference.addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(dataSnapshot == null)
-                            Toast.makeText(poojaList.this, "No data found! Add a Puja on home page", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(poojaList.this, "No data found! Add a Puja on home page", Toast.LENGTH_SHORT).show();
                         for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                            list.add(dsp.getValue(pooja.class));
+                            //list.add(dsp.getValue(pooja.class));
                         }
-                        adapter = new poojaListAdapter(poojaList.this, list, classPath);
+                       // adapter = new poojaListAdapter(poojaList.this, list, classPath);
                         adapter.notifyDataSetChanged();
                         recyclerView.setAdapter(adapter);
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-                        Toast.makeText(poojaList.this, "Server Error! Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(poojaList.this, "Server Error! Check your Internet Connection", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
     private void getDataFromSearchQuery(String searchString) {
-        newList.clear();
-        for(int i=0; i< list.size(); i++){
+       // newList.clear();
+       /* for(int i=0; i< list.size(); i++){
             post_details_format object = list.get(i);
             if(object.getName().toLowerCase().trim().contains(searchString) || object.getPincode().toLowerCase().trim().contains(searchString)){
-                newList.add(object);
+                newList.add(object);*/
             }
         }
-        adapter = new poojaListAdapter(poojaList.this, newList, classPath);
-        adapter.notifyDataSetChanged();
-        recyclerView.setAdapter(adapter);
-    }
-    }
+        //adapter = new poojaListAdapter(poojaList.this, newList, classPath);
+        //adapter.notifyDataSetChanged();
+       // recyclerView.setAdapter(adapter);
+    //}
+   // }
 
 
 

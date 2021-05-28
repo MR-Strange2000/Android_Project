@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/preview"
     tools:context=".Post"
     android:orientation="vertical">
 
@@ -28,7 +29,7 @@
                 android:layout_above="@+id/Lin1"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:layout_marginBottom="86dp"
+                android:layout_marginBottom="30dp"
                 android:fontFamily="@font/adamina"
                 android:text="Post"
                 android:textColor="#ffff00"
@@ -53,17 +54,29 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/edt_bg"
                 android:hint="Decription"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:paddingLeft="150dp"
                 android:padding="15dp"
                 android:text=""
                 android:textSize="20sp" />
-
+            <TextView
+                android:id="@+id/txtsel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/edt_bg"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
             <Spinner
                 android:id="@+id/spinner"
+                android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:background="@android:drawable/btn_dropdown"
                 android:spinnerMode="dropdown"
                 android:layout_height="wrap_content" />
+
+
 
             <EditText
                 android:id="@+id/price"
@@ -78,7 +91,7 @@
                 android:textSize="20sp" />
 
             <Button
-                android:layout_below="@+id/Lin1"
+                android:layout_below="@+id/post_project"
                 android:id="@+id/btn_reg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
