@@ -7,7 +7,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +15,6 @@ import com.example.homepage.Browse;
 import com.example.homepage.R;
 import com.example.homepage.post_job_format;
 import com.example.homepage.selectedjob;
-import com.google.firebase.database.core.Context;
 
 
 import java.util.List;
