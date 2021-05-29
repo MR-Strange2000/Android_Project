@@ -60,7 +60,8 @@ public class joblistAdapter extends RecyclerView.Adapter<joblistAdapter.MyViewHo
         viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(classPath.equals("selectedjob")) {
+                if(classPath.equals("Selectedjob")) {
+                    
                     context.startActivity(new Intent(context, selectedjob.class).putExtra("id", id));
                 }
                /* else {
