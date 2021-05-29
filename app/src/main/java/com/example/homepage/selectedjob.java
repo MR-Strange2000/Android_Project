@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Adapter.joblistAdapter;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,9 +28,11 @@ import java.util.HashMap;
 public class selectedjob extends AppCompatActivity {
         TextView title,name,name1,desc,desc1,category,category1,bid,bid1,price,price1;
         Button placebid,cancel;
-private DatabaseReference databaseReference;
+private DatabaseReference databaseReference,db;
+    FirebaseUser user;
         FirebaseAuth mAuth;
     public static post_job_format jobSelected;
+
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,8 @@ protected void onCreate(Bundle savedInstanceState) {
     cancel = (Button) findViewById(R.id.button_cancel);
     mAuth = FirebaseAuth.getInstance();
     databaseReference = FirebaseDatabase.getInstance().getReference().child("project");
+    db = FirebaseDatabase.getInstance().getReference().child("project_details");
+    user = mAuth.getCurrentUser();
     final int id = getIntent().getIntExtra("id", 0);
     jobSelected = joblistAdapter.getJobs(id);
 
@@ -64,19 +70,37 @@ protected void onCreate(Bundle savedInstanceState) {
     placebid.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            project_details detail = new project_details();
+
+            String uid = user.getUid();
+            String rid = jobSelected.getRid();
+
+            detail.setUid(uid);
+            detail.setRid(rid);
+            detail.setCompleted(false);
+
+            db.child(mAuth.getCurrentUser().getUid()).setValue(detail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(selectedjob.this, "Successfully Added", Toast.LENGTH_SHORT).show();
+                }
+            });
+
             String value = jobSelected.getBid();
             int i=Integer.parseInt(value);
             i = i+1;
-            String val = Integer.toString(i);
-
-            databaseReference.child(jobSelected.getRid()).child("bid").setValue(val);
-
-
-            /*String value = jobSelected.getBid();
-            int i=Integer.parseInt(value);
-            i = i+1;
              value = Integer.toString(i);
-             databaseReference.child("rid").child("bid").setValue(value);*/
+             jobSelected.setBid(value);
+             String n = jobSelected.getName();
+             jobSelected.setName(n);
+            String d = jobSelected.getDescription();
+            jobSelected.setDescription(d);
+            String c = jobSelected.getCatagory();
+            jobSelected.setCatagory(c);
+            String p = jobSelected.getPrice();
+            jobSelected.setPrice(p);
+            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(jobSelected);
+
 
             //jobSelected.setBid(val);
             //HashMap<String,Object> userMap = new HashMap<>();
