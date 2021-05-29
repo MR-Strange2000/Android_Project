@@ -28,7 +28,7 @@ public class AllFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),Browse.class);
+                Intent i = new Intent(getActivity(),all_task_disp.class);
                 startActivity(i);
             }
         });

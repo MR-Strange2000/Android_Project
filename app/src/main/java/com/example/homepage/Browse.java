@@ -52,7 +52,7 @@ public class Browse extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("project/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("project/"+ FirebaseAuth.getInstance().getUid());
         getDataFromFirebase(databaseReference);
 
         searchBox.addTextChangedListener(new TextWatcher()
