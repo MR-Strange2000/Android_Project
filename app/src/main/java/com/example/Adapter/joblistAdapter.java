@@ -7,24 +7,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import android.view.View;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.homepage.Browse;
 import com.example.homepage.R;
 import com.example.homepage.post_job_format;
+import com.example.homepage.selectedjob;
 import com.google.firebase.database.core.Context;
 
 
-import java.text.BreakIterator;
 import java.util.List;
 
 public class joblistAdapter extends RecyclerView.Adapter<joblistAdapter.MyViewHolder> {
-    Context context;
+    Browse context;
     String classPath;
     static List<post_job_format> jobs;
 
-    public joblistAdapter(Context context, List<post_job_format> jobs, String classPath) {
+    public joblistAdapter(Browse context, List<post_job_format> jobs, String classPath) {
         this.context = context;
         this.jobs = jobs;
         this.classPath = classPath;
@@ -60,10 +62,13 @@ public class joblistAdapter extends RecyclerView.Adapter<joblistAdapter.MyViewHo
         viewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(classPath.equals("selectedjob"))
-                    context.startActivity(new Intent(context, selectedPooja.class).putExtra("id", id));
-                else
-                    context.startActivity(new Intent(context, selectedPoojaPandit.class).putExtra("id", id));
+                if(classPath.equals("selectedjob")) {
+                    context.startActivity(new Intent(context, selectedjob.class).putExtra("id", id));
+                }
+               /* else {
+                    Toast.makeText(joblistAdapter.this, "Server Error! Check your Internet Connection", Toast.LENGTH_SHORT).show();
+                }*/
+                    //context.startActivity(new Intent(context, selectedPoojaPandit.class).putExtra("id", id));
             }
         });
     }

@@ -88,7 +88,7 @@ public class Browse extends AppCompatActivity {
                         for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                             list.add(dsp.getValue(post_job_format.class));
                         }
-                        adapter = new joblistAdapter(Browse.this, list, classPath);
+                        adapter = new joblistAdapter(Browse.this,list,classPath);
                         adapter.notifyDataSetChanged();
                         recyclerView.setAdapter(adapter);
                     }

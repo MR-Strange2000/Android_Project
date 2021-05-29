@@ -14,7 +14,7 @@
             android:background="@android:color/white"
             android:drawableRight="@android:drawable/ic_menu_search"
             android:fontFamily="@font/cinzel_bold"
-            android:hint="Type in Puja name or pincode"
+            android:hint="Type in Job Name Or Category"
             android:textSize="15sp" />
 
         <androidx.recyclerview.widget.RecyclerView
