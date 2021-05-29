@@ -3,12 +3,16 @@ package com.example.homepage;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.Adapter.joblistAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +28,7 @@ public class selectedjob extends AppCompatActivity {
         Button placebid,cancel;
 private DatabaseReference databaseReference;
         FirebaseAuth mAuth;
+    public static post_job_format jobSelected;
 
 @Override
 protected void onCreate(Bundle savedInstanceState) {
@@ -44,40 +49,50 @@ protected void onCreate(Bundle savedInstanceState) {
     cancel = (Button) findViewById(R.id.button_cancel);
     mAuth = FirebaseAuth.getInstance();
     databaseReference = FirebaseDatabase.getInstance().getReference().child("project");
+    final int id = getIntent().getIntExtra("id", 0);
+    jobSelected = joblistAdapter.getJobs(id);
+
+    setData(jobSelected);
 
     cancel.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent i = new Intent(selectedjob.this, Post.class);
+            Intent i = new Intent(selectedjob.this, MainActivity.class);
             startActivity(i);
         }
     });
     placebid.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    int bidvalue = (int) snapshot.child("bid").getValue();
-                    bidvalue = bidvalue+1;
-                    HashMap<String,Object> userMap = new HashMap<>();
-                    userMap.put("bid",bidvalue);
-                    databaseReference.updateChildren(userMap);
+            String value = jobSelected.getBid();
+            int i=Integer.parseInt(value);
+            i = i+1;
+            String val = Integer.toString(i);
 
-                }
+            databaseReference.child(jobSelected.getRid()).child("bid").setValue(val);
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
 
-                }
-            });
+            /*String value = jobSelected.getBid();
+            int i=Integer.parseInt(value);
+            i = i+1;
+             value = Integer.toString(i);
+             databaseReference.child("rid").child("bid").setValue(value);*/
+
+            //jobSelected.setBid(val);
+            //HashMap<String,Object> userMap = new HashMap<>();
+            //userMap.put("bid",val);
+           // databaseReference.updateChildren(userMap);
+            Toast.makeText(getApplicationContext(),"Bid value Updated ",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(selectedjob.this, MainActivity.class);
+            startActivity(intent);
+
         }
     });
 
 
-    getJobinfo();
+    //getJobinfo();
 }
-private void getJobinfo() {
+/*private void getJobinfo() {
         databaseReference.addValueEventListener(new ValueEventListener() {
 @Override
 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -103,5 +118,17 @@ public void onCancelled(@NonNull DatabaseError error) {
 
         }
         });
-        }
+        }*/
+    private void setData(post_job_format jobSelected) {
+        name1.setText(jobSelected.getName());
+        desc1.setText(jobSelected.getDescription());
+        category1.setText(jobSelected.getCatagory());
+        bid1.setText(jobSelected.getBid());
+        price1.setText(jobSelected.getPrice());
+
+    }
+
+    public static String getSelectedJobId(){
+        return jobSelected.getRid();
+    }
         }

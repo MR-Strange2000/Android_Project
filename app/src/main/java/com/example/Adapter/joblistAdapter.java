@@ -63,7 +63,7 @@ public class joblistAdapter extends RecyclerView.Adapter<joblistAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 if(classPath.equals("Selectedjob")) {
-                    
+
                     context.startActivity(new Intent(context, selectedjob.class).putExtra("id", id));
                 }
                /* else {
