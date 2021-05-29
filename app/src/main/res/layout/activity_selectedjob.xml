@@ -1,9 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/preview"
     tools:context=".selectedjob">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/Lin1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="20dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/jobtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/Lin1"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="86dp"
+                android:fontFamily="@font/cinzel_bold"
+                android:text="Bid Project"
+                android:textColor="#ffff00"
+                android:textSize="40sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/textname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Job Name"
+                android:textColor="#FFC400"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"/>
+
+            <TextView
+                android:id="@+id/textviewname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edt_bg"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/jobdesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textColor="#FFC400"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:id="@+id/textviewdesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/edt_bg"
+                android:padding="70dp"
+                android:text=""
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/jobcat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Job Category"
+                android:textColor="#FFC400"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:id="@+id/textviewcat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/edt_bg"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/jobbid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:text="No. Of Bids"
+                android:textColor="#FFC400"
+                android:layout_marginTop="15dp"/>
+            <TextView
+                android:id="@+id/textviewbid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/edt_bg"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/jobprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textColor="#FFC400"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"/>
+
+
+            <TextView
+                android:id="@+id/textviewprice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/edt_bg"
+                android:inputType="textMultiLine"
+                android:padding="15dp"
+                android:text=""
+                android:textSize="20sp" />
+
+
+            <Button
+                android:layout_below="@+id/Lin1"
+                android:id="@+id/button_bid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_register"
+                android:layout_marginTop="30dp"
+                android:text="Place Bid"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/colorRegister" />
+            <Button
+                android:id="@+id/button_cancel"
+                android:layout_below="@+id/Lin1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_signin"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/colorSignin" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

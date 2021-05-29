@@ -35,7 +35,7 @@ public class Browse extends AppCompatActivity {
 
     public List<post_job_format> list = new ArrayList<>();
     public List<post_job_format> newList = new ArrayList<>();
-    public static String classPath = "selectedjob";
+    public static String classPath = "Selectedjob";
     //GridLayout mainGridLayout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,7 +84,7 @@ public class Browse extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         if(dataSnapshot == null)
-                            Toast.makeText(Browse.this, "No data found! Add a Puja on home page", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Browse.this, "No data found! Add a Job on home page", Toast.LENGTH_SHORT).show();
                         for (DataSnapshot dsp : dataSnapshot.getChildren()) {
                             list.add(dsp.getValue(post_job_format.class));
                         }
