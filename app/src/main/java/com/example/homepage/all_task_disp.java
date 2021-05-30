@@ -37,6 +37,7 @@ public class all_task_disp extends AppCompatActivity {
         rec.setLayoutManager(new LinearLayoutManager(this));
 
         firebase = FirebaseDatabase.getInstance();
+        databaseReference = firebase.getReference("project_details");
         databaseReference = firebase.getReference("project");
         db = firebase.getReference("project_details");
         list = new ArrayList<>();
@@ -48,9 +49,11 @@ public class all_task_disp extends AppCompatActivity {
         list.clear();
         db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
+
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 if(snapshot.exists() && snapshot.getChildrenCount()>0) {
-                    for (DataSnapshot snap : snapshot.getChildren()) {
+
                         String path = snapshot.child("rid").getValue().toString();
 
 
@@ -71,9 +74,12 @@ public class all_task_disp extends AppCompatActivity {
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                                 Toast.makeText(all_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
+
+
+
                             }
                         });
-                    }
+
                 }
 
             }
@@ -85,4 +91,8 @@ public class all_task_disp extends AppCompatActivity {
         });
 
     }
+
+    private post_job_format process_data(post_job_format data){
+        return null;
+    };
 }

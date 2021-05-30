@@ -89,17 +89,20 @@ protected void onCreate(Bundle savedInstanceState) {
             String value = jobSelected.getBid();
             int i=Integer.parseInt(value);
             i = i+1;
-             value = Integer.toString(i);
-             jobSelected.setBid(value);
-             String n = jobSelected.getName();
-             jobSelected.setName(n);
+            value = Integer.toString(i);
+            post_job_format updatted = new post_job_format();
+            updatted.setBid(value);
+            String n = jobSelected.getName();
+            updatted.setName(n);
             String d = jobSelected.getDescription();
-            jobSelected.setDescription(d);
+            updatted.setDescription(d);
             String c = jobSelected.getCatagory();
-            jobSelected.setCatagory(c);
+            updatted.setCatagory(c);
             String p = jobSelected.getPrice();
-            jobSelected.setPrice(p);
-            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(jobSelected);
+            updatted.setPrice(p);
+            String r = jobSelected.getRid();
+            updatted.setRid(r);
+            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(updatted);
 
 
             //jobSelected.setBid(val);

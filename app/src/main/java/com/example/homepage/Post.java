@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.util.Random;
+
 import static com.example.homepage.R.layout.add;
 import static com.example.homepage.R.layout.search;
 
@@ -80,7 +82,7 @@ public class Post extends AppCompatActivity{
                 job.setPayment("f");
                 job.setDescription(description.getText().toString());
                 job.setCatagory(dropdown.getSelectedItem().toString());
-
+                job.set_room_id(gen());
 
                 String key = myRef.push().getKey();
                 job.setRid(key);
@@ -92,6 +94,10 @@ public class Post extends AppCompatActivity{
                                 Intent i = new Intent(Post.this , MainActivity.class);
                                 startActivity(i);
                                 Toast.makeText(getApplicationContext(), "Job successfully added", Toast.LENGTH_SHORT).show();
+                                for (int j=0; j < 2; j++)
+                                {
+                                    Toast.makeText(getApplicationContext(), "The Rid is " + gen() + "Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
+                                }
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -104,6 +110,16 @@ public class Post extends AppCompatActivity{
                         });
             }
         });
+    }
+
+    public int gen() {
+        Random r = new Random( System.currentTimeMillis() );
+        Integer val = ((1 + r.nextInt(2)) * 10000 + r.nextInt(10000));
+        if(val != 0){
+            return  val;
+        }else {
+            return gen();
+        }
     }
 
 }
