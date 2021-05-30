@@ -94,6 +94,10 @@ public class Post extends AppCompatActivity{
                                 Intent i = new Intent(Post.this , MainActivity.class);
                                 startActivity(i);
                                 Toast.makeText(getApplicationContext(), "Job successfully added", Toast.LENGTH_SHORT).show();
+                                for (int j=0; j < 2; j++)
+                                {
+                                    Toast.makeText(getApplicationContext(), "The Rid is " + gen() + "Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
+                                }
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
