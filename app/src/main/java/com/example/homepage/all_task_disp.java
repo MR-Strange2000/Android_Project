@@ -38,7 +38,7 @@ public class all_task_disp extends AppCompatActivity {
         rec.setLayoutManager(new LinearLayoutManager(this));
 
         firebase = FirebaseDatabase.getInstance();
-        databaseReference = firebase.getReference("project");
+        databaseReference = firebase.getReference("project_details");
         list = new ArrayList<>();
         open = new open_adapter(this , list);
         showData();
@@ -50,6 +50,7 @@ public class all_task_disp extends AppCompatActivity {
             public void onDataChange(@NonNull  DataSnapshot snapshot) {
                 for(DataSnapshot snap: snapshot.getChildren()){
                     post_job_format user = snap.getValue(post_job_format.class);
+                    user = process_data(user);
                     list.add(user);
                 }
             }
@@ -60,4 +61,8 @@ public class all_task_disp extends AppCompatActivity {
             }
         });
     }
+
+    private post_job_format process_data(post_job_format data){
+        return null;
+    };
 }
