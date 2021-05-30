@@ -96,7 +96,7 @@ public class Post extends AppCompatActivity{
                                 Toast.makeText(getApplicationContext(), "Job successfully added", Toast.LENGTH_SHORT).show();
                                 for (int j=0; j < 2; j++)
                                 {
-                                    Toast.makeText(getApplicationContext(), "The Rid is " + gen() + "Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "The Rid is " + gen() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
                                 }
                             }
                         })

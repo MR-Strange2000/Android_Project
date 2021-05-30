@@ -74,6 +74,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
             String uid = user.getUid();
             String rid = jobSelected.getRid();
+            Integer room_id = jobSelected.get_room_id();
 
             detail.setUid(uid);
             detail.setRid(rid);
@@ -82,6 +83,9 @@ protected void onCreate(Bundle savedInstanceState) {
             db.child(mAuth.getCurrentUser().getUid()).setValue(detail).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
+                    for(int i=0; i<2; i++){
+                        Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_SHORT).show();
+                    }
                     Toast.makeText(selectedjob.this, "Successfully Added", Toast.LENGTH_SHORT).show();
                 }
             });
