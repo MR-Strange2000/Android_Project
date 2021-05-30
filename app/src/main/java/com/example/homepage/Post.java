@@ -68,7 +68,7 @@ public class Post extends AppCompatActivity{
         post = (Button)findViewById(R.id.btn_reg);
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("project/" + mAuth.getInstance().getCurrentUser().getUid());
+        myRef = database.getReference("project");
 
         post.setOnClickListener(new View.OnClickListener() {
             @Override

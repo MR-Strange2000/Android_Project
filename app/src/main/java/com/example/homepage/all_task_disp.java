@@ -25,7 +25,7 @@ import java.util.List;
 public class all_task_disp extends AppCompatActivity {
     RecyclerView rec;
     private FirebaseDatabase firebase;
-    DatabaseReference databaseReference;
+    private DatabaseReference databaseReference;
     private open_adapter open;
     private List<post_job_format> list;
     @Override
