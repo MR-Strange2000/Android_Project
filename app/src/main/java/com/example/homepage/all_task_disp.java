@@ -45,31 +45,35 @@ public class all_task_disp extends AppCompatActivity {
     }
 
     private void showData(){
+        list.clear();
         db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists() && snapshot.getChildrenCount()>0){
-                    post_job_format user = snapshot.getValue(post_job_format.class);
-                    String path = user.rid;
+                if(snapshot.exists() && snapshot.getChildrenCount()>0) {
+                    for (DataSnapshot snap : snapshot.getChildren()) {
+                        String path = snapshot.child("rid").getValue().toString();
 
 
-                    databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+path).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull  DataSnapshot snapshot) {
-                            for(DataSnapshot snap: snapshot.getChildren()){
-                                post_job_format user = snap.getValue(post_job_format.class);
-                                list.add(user);
+                        databaseReference.child(path).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                // for (DataSnapshot snap : snapshot.getChildren()) {
+                                post_job_format user1 = snapshot.getValue(post_job_format.class);
+                                list.add(user1);
+
+
+                                // }
+                                adapter = new open_adapter(all_task_disp.this, list, ClassPath);
+                                adapter.notifyDataSetChanged();
+                                rec.setAdapter(adapter);
                             }
-                            adapter = new open_adapter(all_task_disp.this,list,ClassPath);
-                            adapter.notifyDataSetChanged();
-                            rec.setAdapter(adapter);
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull  DatabaseError error) {
-                            Toast.makeText(all_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(all_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
 
             }
