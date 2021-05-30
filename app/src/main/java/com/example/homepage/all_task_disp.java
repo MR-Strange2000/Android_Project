@@ -37,12 +37,9 @@ public class all_task_disp extends AppCompatActivity {
         rec.setLayoutManager(new LinearLayoutManager(this));
 
         firebase = FirebaseDatabase.getInstance();
-<<<<<<< HEAD
         databaseReference = firebase.getReference("project_details");
-=======
         databaseReference = firebase.getReference("project");
         db = firebase.getReference("project_details");
->>>>>>> f7ccf565fc9bfd6b9dab151e2b6a273b25b4a13f
         list = new ArrayList<>();
         open = new open_adapter(this , list, ClassPath);
         showData();
@@ -51,20 +48,13 @@ public class all_task_disp extends AppCompatActivity {
     private void showData(){
         db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
-<<<<<<< HEAD
-            public void onDataChange(@NonNull  DataSnapshot snapshot) {
-                for(DataSnapshot snap: snapshot.getChildren()){
-                    post_job_format user = snap.getValue(post_job_format.class);
-                    user = process_data(user);
-                    list.add(user);
-=======
+
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists() && snapshot.getChildrenCount()>0){
-                    post_job_format user = snapshot.getValue(post_job_format.class);
-                    String path = user.rid;
+                    post_job_format user1 = snapshot.getValue(post_job_format.class);
+                    String path = user1.rid;
 
-
-                    databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()+path).addValueEventListener(new ValueEventListener() {
+                    databaseReference.child(path).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull  DataSnapshot snapshot) {
                             for(DataSnapshot snap: snapshot.getChildren()){
@@ -81,7 +71,6 @@ public class all_task_disp extends AppCompatActivity {
                             Toast.makeText(all_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
                         }
                     });
->>>>>>> f7ccf565fc9bfd6b9dab151e2b6a273b25b4a13f
                 }
 
             }

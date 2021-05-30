@@ -100,6 +100,8 @@ protected void onCreate(Bundle savedInstanceState) {
             updatted.setCatagory(c);
             String p = jobSelected.getPrice();
             updatted.setPrice(p);
+            String r = jobSelected.getRid();
+            updatted.setRid(r);
             databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(updatted);
 
 

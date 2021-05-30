@@ -3,6 +3,7 @@ package com.example.homepage;
 public class post_job_format {
     //String title, place, pincode, time, date, details, bid = "0", rid, payment;
     String name , description , bid = "0" , rid ,  payment , catagory , price;
+    Integer room_id = 0;
     public post_job_format() {
     }
 
@@ -60,5 +61,13 @@ public class post_job_format {
 
     public void setBid(String book) {
         this.bid = book;
+    }
+
+    public Integer get_room_id(){
+        return room_id;
+    }
+
+    public void set_room_id(Integer room_id){
+        this.room_id = room_id;
     }
 }
