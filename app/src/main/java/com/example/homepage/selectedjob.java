@@ -90,10 +90,30 @@ protected void onCreate(Bundle savedInstanceState) {
                 }
             });
 
+//            String value = jobSelected.getBid();
+//            int i=Integer.parseInt(value);
+//            i = i+1;
+//            value = Integer.toString(i);
+//            post_job_format updatted = new post_job_format();
+//            updatted.setBid(value);
+//            String n = jobSelected.getName();
+//            updatted.setName(n);
+//            String d = jobSelected.getDescription();
+//            updatted.setDescription(d);
+//            String c = jobSelected.getCatagory();
+//            updatted.setCatagory(c);
+//            String p = jobSelected.getPrice();
+//            updatted.setPrice(p);
+//            String r = jobSelected.getRid();
+//            updatted.setRid(r);
+//            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(updatted);
             String value = jobSelected.getBid();
             int i=Integer.parseInt(value);
             i = i+1;
             value = Integer.toString(i);
+//            HashMap<String,Object> userMap = new HashMap<>();
+//            userMap.put("bid",value);
+//            databaseReference.child(mAuth.getCurrentUser().getUid()).child("bid").setValue(value);
             post_job_format updatted = new post_job_format();
             updatted.setBid(value);
             String n = jobSelected.getName();
@@ -104,10 +124,15 @@ protected void onCreate(Bundle savedInstanceState) {
             updatted.setCatagory(c);
             String p = jobSelected.getPrice();
             updatted.setPrice(p);
-            String r = jobSelected.getRid();
+            String r= jobSelected.getRid();
             updatted.setRid(r);
-            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(updatted);
-
+            String payme = jobSelected.getPayment();
+            updatted.setPayment(payme);
+            Integer romm_id = jobSelected.get_room_id();
+            updatted.set_room_id(romm_id);
+            // databaseReference.child(mAuth.getCurrentUser().getUid()).removeValue();
+            databaseReference.child(r).setValue(updatted);
+            Toast.makeText(selectedjob.this, "Bid updated", Toast.LENGTH_SHORT).show();
 
             //jobSelected.setBid(val);
             //HashMap<String,Object> userMap = new HashMap<>();

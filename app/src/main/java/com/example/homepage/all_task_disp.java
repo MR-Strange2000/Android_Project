@@ -55,7 +55,7 @@ public class all_task_disp extends AppCompatActivity {
                 if(snapshot.exists() && snapshot.getChildrenCount()>0) {
 
                         String path = snapshot.child("rid").getValue().toString();
-
+                        
 
                         databaseReference.child(path).addValueEventListener(new ValueEventListener() {
                             @Override
