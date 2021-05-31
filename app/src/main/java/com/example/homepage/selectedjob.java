@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Adapter.joblistAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -76,20 +78,22 @@ protected void onCreate(Bundle savedInstanceState) {
             String rid = jobSelected.getRid();
             Integer room_id = jobSelected.get_room_id();
 
+            for(int i=0; i<2; i++){
+                Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_SHORT).show();
+            }
+
             detail.setUid(uid);
             detail.setRid(rid);
             detail.setCompleted(false);
 
-            db.child(mAuth.getCurrentUser().getUid()).setValue(detail).addOnSuccessListener(new OnSuccessListener<Void>() {
+            db.child(mAuth.getCurrentUser().getUid()).push().setValue(detail).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onSuccess(Void aVoid) {
-                    for(int i=0; i<2; i++){
-                        Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_SHORT).show();
-                    }
-                    Toast.makeText(selectedjob.this, "Successfully Added", Toast.LENGTH_SHORT).show();
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(selectedjob.this, "Successfully added", Toast.LENGTH_SHORT).show();
                 }
             });
 
+//<<<<<<< HEAD
 //            String value = jobSelected.getBid();
 //            int i=Integer.parseInt(value);
 //            i = i+1;
@@ -107,10 +111,19 @@ protected void onCreate(Bundle savedInstanceState) {
 //            String r = jobSelected.getRid();
 //            updatted.setRid(r);
 //            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(updatted);
+//            String value = jobSelected.getBid();
+//            int i=Integer.parseInt(value);
+//            i = i+1;
+//            value = Integer.toString(i);
+//=======
+
+
+
             String value = jobSelected.getBid();
             int i=Integer.parseInt(value);
-            i = i+1;
-            value = Integer.toString(i);
+           i = i+1;
+           value = Integer.toString(i);
+//>>>>>>> 5fcd6885c3ef979581fe8764dc6b8d0be4b0b642
 //            HashMap<String,Object> userMap = new HashMap<>();
 //            userMap.put("bid",value);
 //            databaseReference.child(mAuth.getCurrentUser().getUid()).child("bid").setValue(value);
@@ -130,9 +143,17 @@ protected void onCreate(Bundle savedInstanceState) {
             updatted.setPayment(payme);
             Integer romm_id = jobSelected.get_room_id();
             updatted.set_room_id(romm_id);
+//<<<<<<< HEAD
             // databaseReference.child(mAuth.getCurrentUser().getUid()).removeValue();
             databaseReference.child(r).setValue(updatted);
             Toast.makeText(selectedjob.this, "Bid updated", Toast.LENGTH_SHORT).show();
+//=======
+           // databaseReference.child(mAuth.getCurrentUser().getUid()).removeValue();
+            databaseReference.child(r).setValue(updatted);
+
+
+
+//>>>>>>> 5fcd6885c3ef979581fe8764dc6b8d0be4b0b642
 
             //jobSelected.setBid(val);
             //HashMap<String,Object> userMap = new HashMap<>();

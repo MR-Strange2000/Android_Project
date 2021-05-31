@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class all_task_disp extends AppCompatActivity {
@@ -26,7 +27,8 @@ public class all_task_disp extends AppCompatActivity {
     private DatabaseReference databaseReference,db;
     public static String ClassPath = "JobSelected";
     private open_adapter open;
-    private List<post_job_format> list;
+    public List<post_job_format> list = new ArrayList<>();;
+    public List<project_details> list1 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,29 +42,49 @@ public class all_task_disp extends AppCompatActivity {
         databaseReference = firebase.getReference("project_details");
         databaseReference = firebase.getReference("project");
         db = firebase.getReference("project_details");
-        list = new ArrayList<>();
+
         open = new open_adapter(this , list, ClassPath);
         showData();
     }
 
     private void showData(){
         list.clear();
+
         db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
 
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if(snapshot.exists() && snapshot.getChildrenCount()>0) {
+                ArrayList<String> path = new ArrayList<>();
 
-                        String path = snapshot.child("rid").getValue().toString();
+//                 snapshot = snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//                Iterable<DataSnapshot> contactChildren = snapshot.getChildren();
+//                for (DataSnapshot contact : contactChildren) {
+//                    project_details c = contact.getValue(project_details.class);
+//                    list1.add(c);
+//                }
+
+
+                //String path = snapshot.child("rid").getValue().toString();
                         
 
-                        databaseReference.child(path).addValueEventListener(new ValueEventListener() {
+                // if(snapshot.exists() && snapshot.getChildrenCount()>0) {
+
+                Iterator<DataSnapshot> items = snapshot.getChildren().iterator();
+                while (items.hasNext()){
+                    DataSnapshot item = items.next();
+                    path.add(item.child("rid").getValue().toString());
+                }
+
+////                        String path = snapshot.child("rid").getValue().toString();
+
+                for(int i=0; i<path.size(); i++){
+                        databaseReference.child(path.get(i)).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 // for (DataSnapshot snap : snapshot.getChildren()) {
-                                post_job_format user1 = snapshot.getValue(post_job_format.class);
-                                list.add(user1);
+                                list.add(snapshot.getValue(post_job_format.class));
+                                //list.add(user1);
 
 
                                 // }
