@@ -13,7 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.Adapter.joblistAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -76,24 +78,31 @@ protected void onCreate(Bundle savedInstanceState) {
             String rid = jobSelected.getRid();
             Integer room_id = jobSelected.get_room_id();
 
+            for(int i=0; i<2; i++){
+                Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_SHORT).show();
+            }
+
             detail.setUid(uid);
             detail.setRid(rid);
             detail.setCompleted(false);
 
-            db.child(mAuth.getCurrentUser().getUid()).setValue(detail).addOnSuccessListener(new OnSuccessListener<Void>() {
+            db.child(mAuth.getCurrentUser().getUid()).push().setValue(detail).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
-                public void onSuccess(Void aVoid) {
-                    for(int i=0; i<2; i++){
-                        Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_SHORT).show();
-                    }
-                    Toast.makeText(selectedjob.this, "Successfully Added", Toast.LENGTH_SHORT).show();
+                public void onComplete(@NonNull Task<Void> task) {
+                    Toast.makeText(selectedjob.this, "Successfully added", Toast.LENGTH_SHORT).show();
                 }
             });
 
+
+
+
             String value = jobSelected.getBid();
             int i=Integer.parseInt(value);
-            i = i+1;
-            value = Integer.toString(i);
+           i = i+1;
+           value = Integer.toString(i);
+//            HashMap<String,Object> userMap = new HashMap<>();
+//            userMap.put("bid",value);
+//            databaseReference.child(mAuth.getCurrentUser().getUid()).child("bid").setValue(value);
             post_job_format updatted = new post_job_format();
             updatted.setBid(value);
             String n = jobSelected.getName();
@@ -104,9 +113,16 @@ protected void onCreate(Bundle savedInstanceState) {
             updatted.setCatagory(c);
             String p = jobSelected.getPrice();
             updatted.setPrice(p);
-            String r = jobSelected.getRid();
+            String r= jobSelected.getRid();
             updatted.setRid(r);
-            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(updatted);
+            String payme = jobSelected.getPayment();
+            updatted.setPayment(payme);
+            Integer romm_id = jobSelected.get_room_id();
+            updatted.set_room_id(romm_id);
+           // databaseReference.child(mAuth.getCurrentUser().getUid()).removeValue();
+            databaseReference.child(r).setValue(updatted);
+
+
 
 
             //jobSelected.setBid(val);
