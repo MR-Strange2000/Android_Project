@@ -2,7 +2,7 @@ package com.example.homepage;
 
 public class project_details {
     String uid,rid;
-    boolean completed = false;
+    boolean completed;
 
     public String getUid() {
         return uid;

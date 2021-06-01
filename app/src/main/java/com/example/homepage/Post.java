@@ -33,7 +33,7 @@ import static com.example.homepage.R.layout.search;
 public class Post extends AppCompatActivity{
         Spinner dropdown;
         TextView selected;
-    String[] items = new String[]{"website" , "it" , "android" , "one" , "two"};
+    String[] items = new String[]{"Website And It" , "Mobile Development" , "Writing And Content" , "Art And Design" , "Data Entry" , "Software Development" , "Sales And Marketing" , "Buisness" , "Local Jobs" , "Others"};
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
@@ -82,7 +82,9 @@ public class Post extends AppCompatActivity{
                 job.setPayment("f");
                 job.setDescription(description.getText().toString());
                 job.setCatagory(dropdown.getSelectedItem().toString());
+
                 job.set_room_id(gen());
+                Toast.makeText(getApplicationContext(), "The Rid is " + job.get_room_id() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
 
                 String key = myRef.push().getKey();
                 job.setRid(key);
@@ -94,10 +96,7 @@ public class Post extends AppCompatActivity{
                                 Intent i = new Intent(Post.this , MainActivity.class);
                                 startActivity(i);
                                 Toast.makeText(getApplicationContext(), "Job successfully added", Toast.LENGTH_SHORT).show();
-                                for (int j=0; j < 2; j++)
-                                {
-                                    Toast.makeText(getApplicationContext(), "The Rid is " + gen() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
-                                }
+
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

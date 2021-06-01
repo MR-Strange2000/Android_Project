@@ -59,16 +59,17 @@
                 android:padding="15dp"
                 android:text=""
                 android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/txtsel"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="2dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/edt_bg"
                 android:padding="15dp"
                 android:text=""
-                android:visibility="invisible"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:visibility="invisible" />
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_marginTop="30dp"
@@ -100,6 +101,7 @@
                 android:layout_marginTop="30dp"
                 android:text="Post Project"
                 android:textColor="@color/white"
+                android:layout_marginBottom="30dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:backgroundTint="@color/colorRegister" />

@@ -25,7 +25,7 @@ public class PastFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),Browse.class);
+                Intent i = new Intent(getActivity(),past_task_disp.class);
                 startActivity(i);
             }
         });

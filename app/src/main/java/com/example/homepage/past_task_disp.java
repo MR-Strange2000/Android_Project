@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.Adapter.open_adapter;
+import com.example.Adapter.past_adapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,35 +21,34 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class all_task_disp extends AppCompatActivity {
+public class past_task_disp extends AppCompatActivity {
     private RecyclerView rec;
     private RecyclerView.Adapter adapter;
     private FirebaseDatabase firebase;
     private DatabaseReference databaseReference,db;
-    public static String ClassPath = "JobSelected";
-    private open_adapter open;
-    public List<post_job_format> list2 = new ArrayList<>();;
+    public static String ClassPath1 = "JobSelectedd";
+    private past_adapter past;
+    public List<post_job_format> list = new ArrayList<>();;
     public List<project_details> list1 = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_task_disp);
-
+        setContentView(R.layout.activity_past_task_disp);
         rec = (RecyclerView) findViewById(R.id.open_list);
         rec.setHasFixedSize(true);
         rec.setLayoutManager(new LinearLayoutManager(this));
 
         firebase = FirebaseDatabase.getInstance();
-        //databaseReference = firebase.getReference("project_details");
+        //databaseReference  = firebase.getReference("project_details");
         databaseReference = firebase.getReference("project");
-        db = firebase.getReference("project_details");
+        db = firebase.getReference("past_details");
 
-      //  open = new open_adapter(this , list2, ClassPath);
+        past = new past_adapter(this , list, ClassPath1);
         showData();
     }
-
     private void showData(){
-        list2.clear();
+        list.clear();
 
         db.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -66,7 +66,7 @@ public class all_task_disp extends AppCompatActivity {
 
 
                 //String path = snapshot.child("rid").getValue().toString();
-                        
+
 
                 // if(snapshot.exists() && snapshot.getChildrenCount()>0) {
 
@@ -79,29 +79,28 @@ public class all_task_disp extends AppCompatActivity {
 ////                        String path = snapshot.child("rid").getValue().toString();
 
                 for(int i=0; i<path.size(); i++){
-                        databaseReference.child(path.get(i)).addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                // for (DataSnapshot snap : snapshot.getChildren()) {
-                                list2.add(snapshot.getValue(post_job_format.class));
-                                //list.add(user1);
+                    databaseReference.child(path.get(i)).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            // for (DataSnapshot snap : snapshot.getChildren()) {
+                            list.add(snapshot.getValue(post_job_format.class));
+                            //list.add(user1);
 
 
-                                // }
-                                adapter = new open_adapter(all_task_disp.this, list2, ClassPath);
-                                adapter.notifyDataSetChanged();
-                                rec.setAdapter(adapter);
+                            // }
+                            adapter = new past_adapter(past_task_disp.this, list, ClassPath1);
+                            adapter.notifyDataSetChanged();
+                            rec.setAdapter(adapter);
+                        }
 
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(all_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
-
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(past_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
 
 
-                            }
-                        });
+
+                        }
+                    });
 
                 }
 

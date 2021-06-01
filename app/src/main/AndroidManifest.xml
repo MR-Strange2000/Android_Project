@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Homepage">
-        <activity android:name=".Chat"></activity>
+        <activity android:name=".past_task_disp"></activity>
+        <activity android:name=".Completed" />
+        <activity android:name=".Chat" />
         <activity android:name=".all_task_disp" />
         <activity android:name=".selectedjob" />
         <activity android:name=".view_profile" />
