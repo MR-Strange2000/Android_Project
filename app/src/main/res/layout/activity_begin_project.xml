@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Completed">
-
+    tools:context=".begin_project">
     <Button
-        android:id="@+id/button50"
+        android:id="@+id/button70"
         android:layout_width="194dp"
         android:layout_height="82dp"
-        android:text="Completed"
+        android:text="Begin Project"
         android:textColor="#651FFF"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -23,7 +22,7 @@
         app:layout_constraintVertical_bias="0.518" />
 
     <Button
-        android:id="@+id/button60"
+        android:id="@+id/button80"
         android:layout_width="194dp"
         android:layout_height="82dp"
         android:text="Proceed"
@@ -37,4 +36,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.712" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

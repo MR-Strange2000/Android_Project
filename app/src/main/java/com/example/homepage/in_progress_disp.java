@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.Adapter.open_adapter;
+import com.example.Adapter.in_progressAdapter;
 import com.example.Adapter.past_adapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -21,20 +21,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class past_task_disp extends AppCompatActivity {
+public class in_progress_disp extends AppCompatActivity {
     private RecyclerView rec;
     private RecyclerView.Adapter adapter;
     private FirebaseDatabase firebase;
     private DatabaseReference databaseReference,db;
-    public static String ClassPath1 = "JobSelectedd";
-    private past_adapter past;
+    public static String classPath2 = "BeginProject";
+    private in_progressAdapter inprogress;
     public List<post_job_format> list = new ArrayList<>();;
-    public List<project_details> list1 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_past_task_disp);
+        setContentView(R.layout.activity_in_progress_disp);
         rec = (RecyclerView) findViewById(R.id.open_list);
         rec.setHasFixedSize(true);
         rec.setLayoutManager(new LinearLayoutManager(this));
@@ -42,9 +41,9 @@ public class past_task_disp extends AppCompatActivity {
         firebase = FirebaseDatabase.getInstance();
         //databaseReference  = firebase.getReference("project_details");
         databaseReference = firebase.getReference("project");
-        db = firebase.getReference("past_details");
+        db = firebase.getReference("in_progress_details");
 
-        past = new past_adapter(this , list, ClassPath1);
+        inprogress = new in_progressAdapter(this , list, classPath2);
         showData();
     }
     private void showData(){
@@ -77,14 +76,14 @@ public class past_task_disp extends AppCompatActivity {
 
 
                             // }
-                            adapter = new past_adapter(past_task_disp.this, list, ClassPath1);
+                            adapter = new in_progressAdapter(in_progress_disp.this, list, classPath2);
                             adapter.notifyDataSetChanged();
                             rec.setAdapter(adapter);
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-                            Toast.makeText(past_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(in_progress_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
 
 
 
@@ -107,3 +106,4 @@ public class past_task_disp extends AppCompatActivity {
         return null;
     };
 }
+

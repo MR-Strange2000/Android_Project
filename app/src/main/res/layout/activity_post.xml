@@ -87,7 +87,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/edt_bg"
                 android:hint="Price"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="15dp"
                 android:text=""
                 android:textSize="20sp" />

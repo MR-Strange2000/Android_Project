@@ -10,11 +10,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.Adapter.in_progressAdapter;
-import com.example.Adapter.joblistAdapter;
 import com.example.Adapter.open_adapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.badge.BadgeUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,13 +21,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+public class begin_project extends AppCompatActivity {
+    Button begin, proceed;
+    private DatabaseReference databaseReference, db;
 
-import static com.example.homepage.selectedjob.jobSelected;
-
-public class Completed extends AppCompatActivity {
-    Button completed,delete;
-    private DatabaseReference databaseReference, db,db1;
-    //private open_adapter.MyviewHolder holder;
     FirebaseUser user;
     FirebaseAuth mAuth;
     public static post_job_format jobSelected;
@@ -37,19 +32,19 @@ public class Completed extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_completed);
-        completed = (Button)findViewById(R.id.button50);
-        delete = (Button)findViewById(R.id.button60);
+        setContentView(R.layout.activity_begin_project);
+        begin = (Button) findViewById(R.id.button70);
+        proceed = (Button) findViewById(R.id.button80);
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("project");
-        db = FirebaseDatabase.getInstance().getReference().child("past_details");
-        db1 = FirebaseDatabase.getInstance().getReference().child("in_progress_details");
+        db = FirebaseDatabase.getInstance().getReference().child("in_progress_details");
+
         user = mAuth.getCurrentUser();
         final int id = getIntent().getIntExtra("id", 0);
-        jobSelected = in_progressAdapter.getJobs(id);
+        jobSelected = open_adapter.getJobs(id);
 
         //setData(jobSelected);
-        completed.setOnClickListener(new View.OnClickListener() {
+        begin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 project_details detail = new project_details();
@@ -62,29 +57,16 @@ public class Completed extends AppCompatActivity {
                 db.child(mAuth.getCurrentUser().getUid()).push().setValue(detail).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                       Toast.makeText(Completed.this, "Successfully added", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(begin_project.this, "Successfully added", Toast.LENGTH_SHORT).show();
                     }
                 });
-                db1.child(uid).orderByChild("rid").equalTo(rid).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for(DataSnapshot data: dataSnapshot.getChildren()){
-                            data.getRef().removeValue();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        throw databaseError.toException();
-                    }
-                });
-
             }
         });
-        delete.setOnClickListener(new View.OnClickListener() {
+
+        proceed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Completed.this,MainActivity.class);
+                Intent i = new Intent(begin_project.this, MainActivity.class);
                 startActivity(i);
             }
         });

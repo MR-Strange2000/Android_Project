@@ -7,19 +7,17 @@
     tools:context=".AllFragment">
 
 
-
     <Button
         android:id="@+id/button10"
-        android:layout_width="185dp"
-        android:layout_height="81dp"
+        android:layout_width="258dp"
+        android:layout_height="84dp"
         android:layout_alignParentBottom="true"
-        android:text="Browse"
+        android:text="Display All Projects"
         android:textColor="#76FF03"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ public class OpenFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),all_task_disp.class);
+                Intent i = new Intent(getActivity(),in_progress_disp.class);
                 startActivity(i);
             }
         });
