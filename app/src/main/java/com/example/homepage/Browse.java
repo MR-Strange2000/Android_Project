@@ -43,9 +43,6 @@ public class Browse extends AppCompatActivity {
         setContentView(R.layout.browse);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(search);
-
-        //mainGridLayout = (GridLayout)findViewById(R.id.mainGridLayout);
-        //setSingleEvent(mainGridLayout);
         searchBox = findViewById(R.id.searchBox);
 
         recyclerView = findViewById(R.id.recyclerView);

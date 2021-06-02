@@ -117,7 +117,10 @@ public class MainActivity2 extends AppCompatActivity {
             Toast.makeText(this, "Please Enter Your Email!", Toast.LENGTH_SHORT).show();
         }
         if(TextUtils.isEmpty(pwdd)){
-            Toast.makeText(this, "Please Enter the Password !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please Enter the Password ! ", Toast.LENGTH_SHORT).show();
+        }
+        if(pwdd.length() < 6){
+            Toast.makeText(this, "Password Should Be 6 or more letters ! ", Toast.LENGTH_SHORT).show();
         }
         if(TextUtils.isEmpty(cnfPwd)){
             Toast.makeText(this, "Please Confirm The Password !", Toast.LENGTH_SHORT).show();

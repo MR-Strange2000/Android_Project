@@ -161,6 +161,8 @@ public class update_profile_detail extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(update_profile_detail.this, "Email Updated", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(update_profile_detail.this , MainActivity.class);
+                        startActivity(i);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -172,11 +174,13 @@ public class update_profile_detail extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(update_profile_detail.this, "Password Updated", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(update_profile_detail.this , MainActivity.class);
+                        startActivity(i);
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(update_profile_detail.this, "Password Updation failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(update_profile_detail.this, "Password Updation failed Minimum of 6 digits", Toast.LENGTH_SHORT).show();
                     }
                 });
 

@@ -101,7 +101,6 @@ public class selectedjob extends AppCompatActivity {
                                 }else{
                                     Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
                                     Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
-                                    Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
                                     db.child(mAuth.getCurrentUser().getUid()).push().setValue(detail);
                                     String value = jobSelected.getBid();
                                     int i = Integer.parseInt(value);
@@ -126,9 +125,6 @@ public class selectedjob extends AppCompatActivity {
                                     updatted.set_room_id(romm_id);
 
                                     databaseReference.child(r).setValue(updatted);
-
-
-
 
                                     Intent intent = new Intent(selectedjob.this, MainActivity.class);
                                     startActivity(intent);

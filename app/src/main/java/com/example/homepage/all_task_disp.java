@@ -44,11 +44,8 @@ public class all_task_disp extends AppCompatActivity {
         rec.setLayoutManager(new LinearLayoutManager(this));
 
         firebase = FirebaseDatabase.getInstance();
-        //databaseReference = firebase.getReference("project_details");
         databaseReference = firebase.getReference("project");
         db = firebase.getReference("project_details");
-
-      //  open = new open_adapter(this , list2, ClassPath);
         showData();
     }
 
@@ -62,18 +59,6 @@ public class all_task_disp extends AppCompatActivity {
 
                 ArrayList<String> path = new ArrayList<>();
 
-//                 snapshot = snapshot.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//                Iterable<DataSnapshot> contactChildren = snapshot.getChildren();
-//                for (DataSnapshot contact : contactChildren) {
-//                    project_details c = contact.getValue(project_details.class);
-//                    list1.add(c);
-//                }
-
-
-                //String path = snapshot.child("rid").getValue().toString();
-                        
-
-                // if(snapshot.exists() && snapshot.getChildrenCount()>0) {
 
                 Iterator<DataSnapshot> items = snapshot.getChildren().iterator();
                 while (items.hasNext()){
@@ -81,18 +66,12 @@ public class all_task_disp extends AppCompatActivity {
                     path.add(item.child("rid").getValue().toString());
                 }
 
-////                        String path = snapshot.child("rid").getValue().toString();
 
                 for(int i=0; i<path.size(); i++){
                         databaseReference.child(path.get(i)).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                // for (DataSnapshot snap : snapshot.getChildren()) {
                                 list2.add(snapshot.getValue(post_job_format.class));
-                                //list.add(user1);
-
-
-                                // }
                                 adapter = new open_adapter(all_task_disp.this, list2, ClassPath);
                                 adapter.notifyDataSetChanged();
                                 rec.setAdapter(adapter);
@@ -102,9 +81,6 @@ public class all_task_disp extends AppCompatActivity {
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                                 Toast.makeText(all_task_disp.this, "Cannot Fetch", Toast.LENGTH_SHORT).show();
-
-
-
                             }
                         });
 

@@ -90,7 +90,6 @@ public class Post extends AppCompatActivity{
                 job.set_room_id(gen());
                 Toast.makeText(getApplicationContext(), "The Rid is " + job.get_room_id() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
                 Toast.makeText(getApplicationContext(), "The Rid is " + job.get_room_id() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
-                Toast.makeText(getApplicationContext(), "The Rid is " + job.get_room_id() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
                 String key = myRef.push().getKey();
                 job.setRid(key);
 

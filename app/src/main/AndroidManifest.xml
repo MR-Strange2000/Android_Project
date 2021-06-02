@@ -25,17 +25,6 @@
         <activity android:name=".Profile_sec" />
         <activity android:name=".update_profile_detail" />
         <activity android:name=".Post" />
-        <activity android:name=".Telecom" />
-        <activity android:name=".Ship_Trans" />
-        <activity android:name=".Trans_Lang" />
-        <activity android:name=".Mob_Comp" />
-        <activity android:name=".Prod_Manu" />
-        <activity android:name=".Sales_Mark" />
-        <activity android:name=".Engg_Sci" />
-        <activity android:name=".Data_Admin" />
-        <activity android:name=".Design_Arch" />
-        <activity android:name=".Write_Content" />
-        <activity android:name=".IT_Software" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
