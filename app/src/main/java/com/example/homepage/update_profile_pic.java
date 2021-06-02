@@ -2,6 +2,7 @@ package com.example.homepage;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.app.ProgressDialog;
@@ -33,6 +34,8 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.homepage.R.layout.status_bar;
+
 public class update_profile_pic extends AppCompatActivity {
     private CircleImageView profileImageView;
     private Button closeButton,saveButton;
@@ -49,6 +52,8 @@ public class update_profile_pic extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile_pic);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         //init
 
         mAuth = FirebaseAuth.getInstance();

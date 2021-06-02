@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -30,6 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
+import static com.example.homepage.R.layout.status_bar;
+
 public class MainActivity2 extends AppCompatActivity {
     TextView t1,t2;
     Button reg, log;
@@ -44,6 +47,8 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseDatabase.getInstance();
         userRef = db.getReference("User");

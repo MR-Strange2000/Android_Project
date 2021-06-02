@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.example.homepage.R.layout.status_bar;
+
 public class in_progress_disp extends AppCompatActivity {
     private RecyclerView rec;
     private RecyclerView.Adapter adapter;
@@ -34,6 +37,8 @@ public class in_progress_disp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_progress_disp);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         rec = (RecyclerView) findViewById(R.id.open_list);
         rec.setHasFixedSize(true);
         rec.setLayoutManager(new LinearLayoutManager(this));

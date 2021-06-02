@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
+import static com.example.homepage.R.layout.status_bar;
 import static com.example.homepage.selectedjob.jobSelected;
 
 public class Completed extends AppCompatActivity {
@@ -38,6 +40,8 @@ public class Completed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_completed);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         completed = (Button)findViewById(R.id.button50);
         delete = (Button)findViewById(R.id.button60);
         mAuth = FirebaseAuth.getInstance();
@@ -65,7 +69,7 @@ public class Completed extends AppCompatActivity {
                        Toast.makeText(Completed.this, "Successfully added", Toast.LENGTH_SHORT).show();
                     }
                 });
-                db1.child(uid).orderByChild("rid").equalTo(rid).addListenerForSingleValueEvent(new ValueEventListener() {
+               (db1.child(uid).orderByChild("rid").equalTo(rid)).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for(DataSnapshot data: dataSnapshot.getChildren()){

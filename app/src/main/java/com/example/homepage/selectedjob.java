@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.job.JobInfo;
@@ -28,6 +29,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 
+import static com.example.homepage.R.layout.status_bar;
+
 public class selectedjob extends AppCompatActivity {
     TextView title, name, name1, desc, desc1, category, category1, bid, bid1, price, price1;
     Button placebid, cancel;
@@ -42,6 +45,8 @@ public class selectedjob extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectedjob);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         title = (TextView) findViewById(R.id.jobtitle);
         name = (TextView) findViewById(R.id.textname);
         name1 = (TextView) findViewById(R.id.textviewname);
@@ -80,121 +85,80 @@ public class selectedjob extends AppCompatActivity {
                 String rid = jobSelected.getRid();
                 Integer room_id = jobSelected.get_room_id();
 
-                Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
-                Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
+
 
                 detail.setUid(uid);
                 detail.setRid(rid);
                 detail.setCompleted(false);
+                db.child(uid).orderByChild("rid").equalTo(rid)
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull  DataSnapshot snapshot) {
+                                if(snapshot.exists()){
+                                    Toast.makeText(selectedjob.this, "Job already selected", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(selectedjob.this, MainActivity.class);
+                                    startActivity(intent);
+                                }else{
+                                    Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(selectedjob.this, "Room id is " + room_id + " Please Take noticee@@@!!!", Toast.LENGTH_LONG).show();
+                                    db.child(mAuth.getCurrentUser().getUid()).push().setValue(detail);
+                                    String value = jobSelected.getBid();
+                                    int i = Integer.parseInt(value);
+                                    i = i + 1;
+                                    value = Integer.toString(i);
 
-                db.child(mAuth.getCurrentUser().getUid()).push().setValue(detail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-//                        Toast.makeText(selectedjob.this, "Successfully added", Toast.LENGTH_SHORT).show();
-                    }
-                });
+                                    post_job_format updatted = new post_job_format();
+                                    updatted.setBid(value);
+                                    String n = jobSelected.getName();
+                                    updatted.setName(n);
+                                    String d = jobSelected.getDescription();
+                                    updatted.setDescription(d);
+                                    String c = jobSelected.getCatagory();
+                                    updatted.setCatagory(c);
+                                    String p = jobSelected.getPrice();
+                                    updatted.setPrice(p);
+                                    String r = jobSelected.getRid();
+                                    updatted.setRid(r);
+                                    String payme = jobSelected.getPayment();
+                                    updatted.setPayment(payme);
+                                    Integer romm_id = jobSelected.get_room_id();
+                                    updatted.set_room_id(romm_id);
 
-//<<<<<<< HEAD
-//            String value = jobSelected.getBid();
-//            int i=Integer.parseInt(value);
-//            i = i+1;
-//            value = Integer.toString(i);
-//            post_job_format updatted = new post_job_format();
-//            updatted.setBid(value);
-//            String n = jobSelected.getName();
-//            updatted.setName(n);
-//            String d = jobSelected.getDescription();
-//            updatted.setDescription(d);
-//            String c = jobSelected.getCatagory();
-//            updatted.setCatagory(c);
-//            String p = jobSelected.getPrice();
-//            updatted.setPrice(p);
-//            String r = jobSelected.getRid();
-//            updatted.setRid(r);
-//            databaseReference.child(mAuth.getCurrentUser().getUid()).setValue(updatted);
-//            String value = jobSelected.getBid();
-//            int i=Integer.parseInt(value);
-//            i = i+1;
-//            value = Integer.toString(i);
-//=======
-
-
-                String value = jobSelected.getBid();
-                int i = Integer.parseInt(value);
-                i = i + 1;
-                value = Integer.toString(i);
-//>>>>>>> 5fcd6885c3ef979581fe8764dc6b8d0be4b0b642
-//            HashMap<String,Object> userMap = new HashMap<>();
-//            userMap.put("bid",value);
-//            databaseReference.child(mAuth.getCurrentUser().getUid()).child("bid").setValue(value);
-                post_job_format updatted = new post_job_format();
-                updatted.setBid(value);
-                String n = jobSelected.getName();
-                updatted.setName(n);
-                String d = jobSelected.getDescription();
-                updatted.setDescription(d);
-                String c = jobSelected.getCatagory();
-                updatted.setCatagory(c);
-                String p = jobSelected.getPrice();
-                updatted.setPrice(p);
-                String r = jobSelected.getRid();
-                updatted.setRid(r);
-                String payme = jobSelected.getPayment();
-                updatted.setPayment(payme);
-                Integer romm_id = jobSelected.get_room_id();
-                updatted.set_room_id(romm_id);
-                // databaseReference.child(mAuth.getCurrentUser().getUid()).removeValue();
-                databaseReference.child(r).setValue(updatted);
-//                Toast.makeText(selectedjob.this, "Bid updated", Toast.LENGTH_SHORT).show();
-                // databaseReference.child(mAuth.getCurrentUser().getUid()).removeValue();
-//            databaseReference.child(r).setValue(updatted);
+                                    databaseReference.child(r).setValue(updatted);
 
 
-//>>>>>>> 5fcd6885c3ef979581fe8764dc6b8d0be4b0b642
 
-                //jobSelected.setBid(val);
-                //HashMap<String,Object> userMap = new HashMap<>();
-                //userMap.put("bid",val);
-                // databaseReference.updateChildren(userMap);
-//                Toast.makeText(getApplicationContext(),"Bid value Updated ",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(selectedjob.this, MainActivity.class);
-                startActivity(intent);
+
+                                    Intent intent = new Intent(selectedjob.this, MainActivity.class);
+                                    startActivity(intent);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(selectedjob.this, "Error", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+
+
+
+
+
+
+
+
 
             }
         });
 
 
-        //getJobinfo();
+
     }
 
-    /*private void getJobinfo() {
-            databaseReference.addValueEventListener(new ValueEventListener() {
-    @Override
-    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-           // if(dataSnapshot.exists() && dataSnapshot.getChildrenCount()>0){
-            String name = dataSnapshot.child("name").getValue().toString();
-            name1.setText(name);
 
-            String description = dataSnapshot.child("description").getValue().toString();
-            desc1.setText(description);
-            String category = dataSnapshot.child("catagory").getValue().toString();
-            category1.setText(category);
-            String bids = dataSnapshot.child("bid").getValue().toString();
-            bid1.setText(bids);
-            String Price = dataSnapshot.child("price").getValue().toString();
-            price1.setText(Price);
-
-
-
-            }
-
-    @Override
-    public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-            });
-            
-            }*/
     private void setData(post_job_format jobSelected) {
         name1.setText(jobSelected.getName());
         desc1.setText(jobSelected.getDescription());

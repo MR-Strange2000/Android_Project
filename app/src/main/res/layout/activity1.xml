@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/images"
+    android:background="@drawable/front"
     tools:context=".Main1">
 
 
@@ -44,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Forget Password"
+            android:fontFamily="@font/cinzel_bold"
             android:textColor="#ffffff"
             android:layout_marginTop="20dp"
             android:textStyle="bold"
@@ -84,10 +85,10 @@
         android:layout_above="@+id/Lin1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="86dp"
-        android:fontFamily="@font/adamina"
+        android:fontFamily="@font/cinzel_bold"
         android:text="Sign In"
         android:textColor="#ffff00"
-        android:textSize="40sp"
+        android:textSize="45sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

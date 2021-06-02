@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,6 +22,8 @@ import org.w3c.dom.Text;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.homepage.R.layout.status_bar;
+
 public class Profile_sec extends AppCompatActivity {
     TextView txtName;
     private CircleImageView profileImageView;
@@ -33,6 +36,8 @@ public class Profile_sec extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_sec);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         mAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("User");
         btn1= (Button)findViewById(R.id.btnn);

@@ -18,7 +18,7 @@
         android:layout_height="83dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="2dp"
-        android:background="@color/black"
+        android:background="@drawable/black"
         app:itemIconSize="30dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="#FFFFFF"

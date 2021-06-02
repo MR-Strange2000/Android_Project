@@ -4,7 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/stones"
     tools:context=".Completed">
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="410dp"
+        android:layout_height="111dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/cinzel_bold"
+        android:gravity="center"
+        android:text="Completed Project"
+        android:textColor="#ffff00"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="97dp" />
 
     <Button
         android:id="@+id/button50"
@@ -20,7 +35,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.518" />
+        app:layout_constraintVertical_bias="0.556" />
 
     <Button
         android:id="@+id/button60"
@@ -33,8 +48,8 @@
         app:backgroundTint="#27076E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.712" />
+        app:layout_constraintVertical_bias="0.76" />
 </androidx.constraintlayout.widget.ConstraintLayout>

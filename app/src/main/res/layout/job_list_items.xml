@@ -14,7 +14,7 @@
         android:id="@+id/itemComponent"
         android:layout_width="match_parent"
         android:layout_height="81dp"
-        android:background="@android:color/white"
+        android:background="#FFD700"
         android:padding="10dp">
 
 
@@ -38,7 +38,7 @@
             android:layout_alignStart="@+id/jobName"
             android:fontFamily="@font/cinzel_bold"
             android:text="TextView"
-            android:textColor="@color/colorRegister"
+            android:textColor="#000080"
             android:textSize="15sp" />
 
 

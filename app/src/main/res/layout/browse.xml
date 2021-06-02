@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Browse"
-    android:background="@drawable/images">
+    android:background="@drawable/stones">
 
         <EditText
             android:id="@+id/searchBox"

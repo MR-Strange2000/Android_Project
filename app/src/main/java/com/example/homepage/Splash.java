@@ -12,6 +12,9 @@ import android.view.animation.AnimationUtils;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.homepage.R.layout.home;
+import static com.example.homepage.R.layout.status_bar;
+
 
 public class Splash extends AppCompatActivity {
     private static int SPLASH_SCREEN = 6000;
@@ -23,6 +26,8 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         img = (CircleImageView)findViewById(R.id.dp1);
         topanim = AnimationUtils.loadAnimation(this,R.anim.top_animation);
         img.setAnimation(topanim);

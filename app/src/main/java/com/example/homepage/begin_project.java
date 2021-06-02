@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -21,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static com.example.homepage.R.layout.status_bar;
+
 public class begin_project extends AppCompatActivity {
     Button begin, proceed;
     private DatabaseReference databaseReference, db;
@@ -33,6 +36,8 @@ public class begin_project extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_begin_project);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         begin = (Button) findViewById(R.id.button70);
         proceed = (Button) findViewById(R.id.button80);
         mAuth = FirebaseAuth.getInstance();

@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="#070707"
+    android:background="@drawable/black"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="#000000"
+        android:fontFamily="@font/cinzel_bold"
         android:text="Post Job"
         android:textColor="#FDD835"
         android:textSize="32sp"

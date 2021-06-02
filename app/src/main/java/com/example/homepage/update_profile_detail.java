@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -31,6 +32,8 @@ import org.w3c.dom.Text;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import static com.example.homepage.R.layout.status_bar;
+
 public class update_profile_detail extends AppCompatActivity {
     TextView t1,t2,t3,t4,t5,t6,t7;
     EditText edtname,edtmail,edtdate,edtgen,edtadd,edtpass;
@@ -43,6 +46,8 @@ public class update_profile_detail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile_detail);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
         t1 = (TextView)findViewById(R.id.text1);
         t2 = (TextView)findViewById(R.id.text2);
         t3 = (TextView)findViewById(R.id.text3);

@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    android:background="@drawable/images">
+    android:background="@drawable/redd">
 
     <LinearLayout
         android:orientation="vertical"
@@ -17,6 +18,9 @@
         android:background="@android:color/holo_blue_dark">
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
+           android:background="@color/black"
+            app:tabTextColor="@color/white"
+            app:tabSelectedTextColor="#FFEA00"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

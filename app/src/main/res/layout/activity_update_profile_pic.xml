@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/blue"
     tools:context=".update_profile_pic">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -21,7 +22,9 @@
         android:layout_below="@+id/profile_image"
         android:text="Change Profile"
         android:layout_centerHorizontal="true"
-        android:textSize="16sp"
+        android:textSize="24sp"
+        android:textColor="#FBFBF9"
+        android:fontFamily="@font/cinzel_bold"
         android:textStyle="bold"
         android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
@@ -44,7 +47,7 @@
             android:text="Cancel"
             android:textColor="#FFEA00"
             android:textStyle="bold"
-            app:backgroundTint="#041367" />
+            app:backgroundTint="#090909" />
 
         <Button
             android:id="@+id/btnsave"
@@ -56,7 +59,7 @@
             android:text="Update"
             android:textColor="#FFEA00"
             android:textStyle="bold"
-            app:backgroundTint="#05135E" />
+            app:backgroundTint="#000209" />
     </LinearLayout>
 
 </RelativeLayout>

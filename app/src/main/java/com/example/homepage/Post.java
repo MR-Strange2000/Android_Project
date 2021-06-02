@@ -1,6 +1,7 @@
 package com.example.homepage;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -29,6 +30,7 @@ import java.util.Random;
 
 import static com.example.homepage.R.layout.add;
 import static com.example.homepage.R.layout.search;
+import static com.example.homepage.R.layout.status_bar;
 
 public class Post extends AppCompatActivity{
         Spinner dropdown;
@@ -47,6 +49,8 @@ public class Post extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(status_bar);
        dropdown = (Spinner)findViewById(R.id.spinner);
        ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_spinner_item , items);
        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -85,7 +89,8 @@ public class Post extends AppCompatActivity{
 
                 job.set_room_id(gen());
                 Toast.makeText(getApplicationContext(), "The Rid is " + job.get_room_id() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(getApplicationContext(), "The Rid is " + job.get_room_id() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "The Rid is " + job.get_room_id() + " Please Do make notice of this code!!!!!", Toast.LENGTH_LONG).show();
                 String key = myRef.push().getKey();
                 job.setRid(key);
 

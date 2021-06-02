@@ -7,7 +7,6 @@
     tools:context=".PastFragment">
 
 
-
     <Button
         android:id="@+id/button12"
         android:layout_width="330dp"
@@ -16,9 +15,9 @@
         android:text="Display Completed Projects"
         android:textColor="#76FF03"
         android:textSize="24sp"
+        app:cornerRadius="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
